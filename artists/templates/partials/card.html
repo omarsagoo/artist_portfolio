@@ -1,0 +1,14 @@
+<div class="card mb-3">
+  <h5 class="card-header ">{{ page.title }}</h5>
+  <div class="card-body border-dark">
+    <p class="card-text text-dark">
+      <img src="{{ page.image.url }}" alt="" style="height: 100px">
+      <hr>
+      {{ page.content|truncatewords_html:30 }}
+      <hr>
+      <div class="text-right"><a href="{% url 'art-details-page' page.slug %}" title="Read More">Read More</a></div>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">Last updated {{ page.modified|date:"SHORT_DATETIME_FORMAT" }} by <b>{{ page.artist.username }}</b></small>
+  </div>
+</div>
