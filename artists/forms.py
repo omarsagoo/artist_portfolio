@@ -7,3 +7,6 @@ class ArtPageForm(forms.ModelForm):
     class Meta:
         model = ArtPage
         fields = ('title', 'content', 'artist', 'image')
+
+# class ArtistForm(forms.ModelForm):
+#     class Meta:

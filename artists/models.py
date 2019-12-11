@@ -7,7 +7,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class ArtPage(models.Model):
-    title = models.CharField(max_length=150, help_text="The title of your Artwork")
+    title = models.CharField(max_length=150, unique=True, help_text="The title of your Artwork")
 
     artist = models.ForeignKey(User, on_delete=models.PROTECT, 
                                help_text="The Artist who posted this")
@@ -39,5 +39,5 @@ class ArtPage(models.Model):
         # Call save on the superclass.
         return super(ArtPage, self).save(*args, **kwargs)
 
-# class Artist(User):
-#     pass
+class Artist(User):
+    pass
