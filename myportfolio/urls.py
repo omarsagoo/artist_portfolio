@@ -22,6 +22,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     path('', include('artists.urls')),
     # Accounts
     path('accounts/', include('django.contrib.auth.urls')),
