@@ -5,13 +5,26 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, UpdateView
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-# from django.core.urlresolvers import reverse_lazy
+import requests 
 
 from .forms import ArtPageForm
-# from django.contrib.auth.models import User
-
 from .models import ArtPage
 
+
+
+def get_api_quote():
+    url = "https://matchilling-tronald-dump-v1.p.rapidapi.com/random/quote"
+
+    headers = {
+        'x-rapidapi-host': "matchilling-tronald-dump-v1.p.rapidapi.com",
+        'x-rapidapi-key': "d3768e1816msh827bc58f22bcdd0p1689a1jsn8fa0a0bfe2d2",
+        'accept': "application/hal+json"
+        }
+
+    response = requests.request("GET", url, headers=headers)
+    quote_json = response.json()
+    
+    return quote_json['value']
 
 # Create your views here.
 class ArtPageDetailView(DetailView):
@@ -23,8 +36,9 @@ class ArtPageDetailView(DetailView):
     def get(self, request, artist, slug):
         ''' return a specific page by slug '''
         art_page = self.get_queryset().get(slug__iexact=slug)
+        trump_quote = get_api_quote()
         # print(ArtPage.artist.get_username())
-        return render(request, self.template_name, {'page': art_page})
+        return render(request, self.template_name, {'page': art_page, 'trump':trump_quote})
 
 class ArtPageUpdateView(UpdateView):
     template_name = "page_create.html"
@@ -35,7 +49,6 @@ class ArtPageUpdateView(UpdateView):
     def get_object(self):
         ''' return a specific page by slug '''
         slug = self.kwargs.get('slug')
-        # print(ArtPage.artist.get_username())
         return get_object_or_404(ArtPage, slug=slug)
 
     # def form_valid(self, form):

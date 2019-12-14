@@ -26,3 +26,36 @@ class ArtListTest(TestCase):
         
         self.assertEqual(response.status_code, 200)
 
+class ArtDeleteTest(TestCase):
+    def test_create_page(self):
+        user = User.objects.create()
+
+        art_page = ArtPage(artist=user, title='my art page', image=None)
+
+        art_page.save()
+
+        art_pages = ArtPage.objects.all()
+        self.assertEqual(len(art_pages), 1)
+
+    def test_delete_page(self):
+        user = User.objects.create()
+
+        art_page = ArtPage(artist=user, title='my art page', image=None)
+
+        art_page.save()
+        art_pages = ArtPage.objects.all()
+        self.assertEqual(len(art_pages), 1)
+
+        art_page.delete()
+        art_pages = ArtPage.objects.all()
+        self.assertEqual(len(art_pages), 0)
+
+class UpdateViewTest(TestCase):
+    def test_update_page(self):
+        user = User.objects.create()
+
+        art_page = ArtPage(artist=user, title='my art page', image=None)
+
+        art_page.save()
+        art_page.title = "test page"
+        self.assertEqual(art_page.title, "test page")
