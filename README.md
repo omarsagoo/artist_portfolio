@@ -9,7 +9,7 @@ uses an outside api to add in trump quotes.(just because)
 uses an an outside app (accounts) to handle users.
 
 Heroku app: 
-art-port-web.herokuapp.com
+https://art-port-web.herokuapp.com
 
 or clone and run $ python3 manage.py runserver
 
