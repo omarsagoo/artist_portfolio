@@ -26,6 +26,9 @@ def get_api_quote():
     
     return quote_json['value']
 
+def index(request):
+    return render(request, 'index.html')
+
 # Create your views here.
 class ArtPageDetailView(DetailView):
     ''' renders a specific art page

@@ -17,6 +17,9 @@ class ArtPage(models.Model):
 
     image = models.ImageField(upload_to="gallery")
 
+    short_desc = models.CharField(max_length=1000,
+                                help_text="A short description to display on the main page.")
+
     content = models.TextField()
 
     published = models.DateTimeField(auto_now_add=True)

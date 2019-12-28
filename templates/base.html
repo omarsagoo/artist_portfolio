@@ -9,9 +9,9 @@
     {% load static %}
     <title>Art Portfolie</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'art-list-page' %}"><i class="fas fa-fw fa-book"></i> ArtPortfolio</a>
+  <body style="background: burlywood">
+    <nav class="navbar navbar-expand-md navbar-dark bg-light">
+      <a class="navbar-brand" href="{% url 'art-list-page' %}"> ArtPortfolio</a>
       <form class="form-inline ml-auto">
         {% if user.is_authenticated %}
           <div class="text-white">Hello, <strong>{{ user.username }}</strong>!</div>
